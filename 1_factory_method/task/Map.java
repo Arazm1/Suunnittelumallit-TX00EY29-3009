@@ -1,9 +1,7 @@
 import java.util.Scanner;
 
 public abstract class Map {
-    void createTile(){
-        return new 
-    }
+    abstract Tile createTile();
 
-    void display();
+    abstract void display();
 }

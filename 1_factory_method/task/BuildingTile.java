@@ -1,16 +1,15 @@
-package tiles;
 
 
-public class RoadTile implements Tile {
+public class BuildingTile implements Tile {
 
     @Override
     public String getCharacter(){
-        return "R";
+        return "B";
     }
 
     @Override
     public String getType(){
-        return "road";
+        return "building";
     }
     
 }

@@ -1,4 +1,4 @@
-package tiles;
+
 
 public class ForestTile implements Tile {
       
