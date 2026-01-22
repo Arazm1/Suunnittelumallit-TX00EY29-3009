@@ -1,4 +1,4 @@
-
+package A1_factory_method.task;
 
 public class WaterTile implements Tile {
 

@@ -1,3 +1,5 @@
+package A1_factory_method.task;
+
 
 
 public class SwampTile implements Tile {
