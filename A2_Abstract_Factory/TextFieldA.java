@@ -9,7 +9,7 @@ public class TextFieldA extends TextField {
 
     @Override
     public void display(){
-        System.out.println("TextField-A");
+        System.out.println("TextField-A: " + text);
     }
     
 }

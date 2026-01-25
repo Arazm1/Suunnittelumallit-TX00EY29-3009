@@ -8,6 +8,6 @@ public class CheckBoxA extends Checkbox{
 
     @Override
     public void display(){
-        System.out.println("CheckBox-A");
+        System.out.println("CheckBox-A: " + text);
     }   
 }

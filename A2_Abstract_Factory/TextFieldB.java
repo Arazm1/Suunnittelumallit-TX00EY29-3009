@@ -8,6 +8,6 @@ public class TextFieldB extends TextField{
 
     @Override
     public void display(){
-        System.out.println("TextField-B");
+        System.out.println("TextField-B: " + text);
     }
 }

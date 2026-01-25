@@ -8,7 +8,7 @@ public class CheckBoxB extends Checkbox{
 
     @Override
     public void display(){
-        System.out.println("CheckBox-B");
+        System.out.println("CheckBox-B: " + text);
     }
     
 }
