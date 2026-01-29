@@ -40,7 +40,12 @@ public class Organization extends Component{
     }
 
     @Override
-    public String toXML(String data){
-        return "WIP";
+    public String toXML(String space){
+        String xml = space + "<organization name=\"" + this.name + "\">\n";
+        for(Component c : children){
+            xml += c.toXML(space + " ");
+        }
+        xml += space + "</organization>\n";
+        return xml;
     }
 }

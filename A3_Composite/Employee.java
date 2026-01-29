@@ -30,7 +30,9 @@ public class Employee extends Component{
     }
 
     @Override
-    public String toXML(String data){
-        throw new UnsupportedOperationException("Not supported in leaf.");
+    public String toXML(String space){
+        //throw new UnsupportedOperationException("Not supported in leaf.");
+        return space + "<employee name=\"" + name +
+            "\" salary=\"" + salary + "\" />\n";
     }
 }

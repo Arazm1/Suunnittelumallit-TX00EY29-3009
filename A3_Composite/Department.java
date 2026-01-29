@@ -40,8 +40,15 @@ public class Department extends Component{
     }
 
     @Override
-    public String toXML(String data){
-        return "WIP";
+    public String toXML(String space) {
+        String xml = space + "<department name=\"" + name + "\">\n";
+
+        for (Component c : children) {
+            xml += c.toXML(space + "    ");
+        }
+
+        xml += space + "</department>\n";
+        return xml;
     }
     
 }
