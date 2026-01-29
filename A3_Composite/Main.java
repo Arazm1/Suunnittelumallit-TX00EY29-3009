@@ -9,6 +9,7 @@ public class Main {
 
         department1.add(employee1);
         department1.printData();
+        department1.getSalary();
 
 
     }

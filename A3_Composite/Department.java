@@ -14,7 +14,6 @@ public class Department extends Component{
         System.out.println(this.name);
     }
 
-    //Add an employee to employees
     @Override
     public void add(Component employee){
         this.children.add(employee);

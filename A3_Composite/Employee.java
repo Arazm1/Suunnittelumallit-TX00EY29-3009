@@ -29,6 +29,7 @@ public class Employee extends Component{
         return this.salary;
     }
 
+    @Override
     public String toXML(String data){
         throw new UnsupportedOperationException("Not supported in leaf.");
     }
