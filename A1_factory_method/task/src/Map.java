@@ -7,7 +7,6 @@ public abstract class Map {
 
     abstract Tile createTile(int row, int col);
 
-    //Fills the map
     public Map(){
         for(int i = 0; i<5; i++){
             for(int j = 0; j<5; j++){
