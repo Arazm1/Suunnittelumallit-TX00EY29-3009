@@ -1,4 +1,4 @@
-package A1_factory_method.task;
+package A1_factory_method.task.src;
 
 public class WildernessMap extends Map{
 

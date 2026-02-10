@@ -1,3 +1,5 @@
+package A4_Observer.task.src;
+
 import java.util.Random;
 
 public class WeatherStation implements Runnable {

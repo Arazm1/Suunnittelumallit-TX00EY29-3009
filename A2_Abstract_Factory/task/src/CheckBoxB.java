@@ -1,4 +1,4 @@
-package A2_Abstract_Factory;
+package A2_Abstract_Factory.task.src;
 
 public class CheckBoxB extends Checkbox{
 

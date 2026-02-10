@@ -1,4 +1,4 @@
-package A3_Composite;
+package A3_Composite.task.src;
 
 public class Main {
     public static void main(String[] args){

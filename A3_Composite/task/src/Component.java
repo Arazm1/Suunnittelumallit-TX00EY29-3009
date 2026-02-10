@@ -1,4 +1,4 @@
-package A3_Composite;
+package A3_Composite.task.src;
 
 public abstract class Component {
     protected String name;

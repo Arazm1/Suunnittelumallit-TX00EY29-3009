@@ -1,4 +1,4 @@
-package A3_Composite;
+package A3_Composite.task.src;
 
 import java.util.ArrayList;
 import java.util.List;

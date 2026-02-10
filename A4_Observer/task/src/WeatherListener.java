@@ -1,3 +1,5 @@
+package A4_Observer.task.src;
+
 public class WeatherListener implements Observer {
     private String name;
 

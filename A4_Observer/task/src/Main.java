@@ -1,3 +1,5 @@
+package A4_Observer.task.src;
+
 public class Main {
 
     public static void main(String[] args) {
