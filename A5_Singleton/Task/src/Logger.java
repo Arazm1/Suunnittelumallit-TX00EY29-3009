@@ -63,7 +63,7 @@ public class Logger {
                 System.out.println("close - successful");
             }
 
-            System.out.println("close (try block) - unsuccessful");
+            //System.out.println("close (try block) - unsuccessful");
         }
         catch(IOException e){
             System.out.println("Error in close: " + e);
