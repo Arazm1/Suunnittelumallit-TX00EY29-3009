@@ -32,7 +32,7 @@ public class Logger {
             this.filename = newFile;
             bw = new BufferedWriter(new FileWriter(defaultPath + newFile, true));
             
-            System.out.println("setFilename - successful");
+            //System.out.println("setFilename - successful");
         }
         catch(IOException e){
             System.out.println("Error in setFilename: " + e);
@@ -46,7 +46,7 @@ public class Logger {
                 bw.newLine();
                 bw.flush();
 
-                System.out.println("Write - successful");
+                //System.out.println("Write - successful");
             }
         }
         catch(IOException e){
@@ -60,7 +60,7 @@ public class Logger {
                 bw.close();
                 bw = null;
 
-                System.out.println("close - successful");
+                //System.out.println("close - successful");
             }
 
             //System.out.println("close (try block) - unsuccessful");
