@@ -13,16 +13,19 @@ public class Main {
         printer = new XMLPrinter(new BasicPrinter());
         printer.print("hello world");
 
-        EncryptedPrinter encryptedPrinter = new EncryptedPrinter(new BasicPrinter());
-
-        String encrypted = encryptedPrinter.encryptDecrypt("Hello World", Cipher.ENCRYPT_MODE);
-        encryptedPrinter.print("Hello World");
-        encryptedPrinter.print(encrypted);
+        printer = new EncryptedPrinter(new XMLPrinter(new BasicPrinter()));
+        printer.print("Hello World!");
 
 
-        //encryptedPrinter.print("hello world");
-        //String encryptedText = encryptedPrinter.encryptDecrypt("hello world", Cipher.ENCRYPT_MODE);
-        //encryptedPrinter.print(encryptedText);
+
+
+        EncryptedPrinter ep = new EncryptedPrinter(new BasicPrinter());
+
+        String encrypted = ep.encrypt("Hello World!");
+        System.out.println("Encrypted: " + encrypted);
+
+        String decrypted = ep.decrypt(encrypted);
+        System.out.println("Decrypted: " + decrypted);
 
     }
     

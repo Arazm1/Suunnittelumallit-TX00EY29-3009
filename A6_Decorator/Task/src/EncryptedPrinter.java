@@ -33,6 +33,7 @@ public class EncryptedPrinter extends PrinterDecorator {
         }
     }
 
+    /* 
     public String encryptDecrypt(String text, int mode){
         try{
             Cipher cipher = Cipher.getInstance(algorithm);
@@ -52,19 +53,42 @@ public class EncryptedPrinter extends PrinterDecorator {
             return null;
         }
     }
+        */
+
+    public String encrypt(String text){
+        try{
+            Cipher cipher = Cipher.getInstance(algorithm);
+            cipher.init(Cipher.ENCRYPT_MODE, this.secretKey);
+            byte[] result = cipher.doFinal(text.getBytes());
+            return Base64.getEncoder().encodeToString(result);
+        }
+        catch(Exception e){
+            return null;
+        }
+    }
+
+
+    public String decrypt(String text){
+        try{
+            Cipher cipher = Cipher.getInstance(algorithm);
+            cipher.init(Cipher.DECRYPT_MODE, this.secretKey);
+            byte[] decodedBytes = Base64.getDecoder().decode(text);
+            byte[] result = cipher.doFinal(decodedBytes);
+            return new String(result);
+        }
+        catch(Exception e){
+            return null;
+        }
+
+    }
+
+
+
 
     @Override
     public void print(String text){
-        if(!encrypted){
-            text = encryptDecrypt(text, Cipher.ENCRYPT_MODE);
-            encrypted = true;
-        }
-        else{
-            text = encryptDecrypt(text, Cipher.DECRYPT_MODE);
-            encrypted = false;
-        }
-
-        super.print(text);
+        String encryptedText = encrypt(text);
+        super.print(encryptedText);
     }
     
 }
