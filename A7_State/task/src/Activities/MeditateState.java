@@ -12,17 +12,21 @@ public class MeditateState extends State{
     @Override
     public void action(){
 
-        getCharacter().printCharacterStats();
+        //getCharacter().printCharacterStats();
+        //this.getCharacter().displayCurrentLevel();
         String[] options = {"Meditate"};
         switch(this.getCharacter().readUserChoice(options)){
             case 1 -> meditate();
         }
 
+        this.getCharacter().checkLevelUp();
+
     }
 
 
     private void meditate(){
-        this.getCharacter().addHealthPoints(10);
+        int gainedHealthPoints =(int)(Math.random() * 21) + 10;
+        this.getCharacter().addHealthPoints(gainedHealthPoints);
+        System.out.println("Gained HealthPoints: " + gainedHealthPoints );
     }
-    
 }

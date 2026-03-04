@@ -11,6 +11,8 @@ public class MasterState extends State{
 
     @Override
     public void action(){
+        //this.getCharacter().displayCurrentLevel();
+        this.getCharacter().printCharacterStats();
         System.out.println("The WORK is done.");
         return;
     }

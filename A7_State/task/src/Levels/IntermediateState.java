@@ -14,6 +14,8 @@ public class IntermediateState extends State {
     }
 
     public void action(){
+        //this.getCharacter().displayCurrentLevel();
+        this.getCharacter().printCharacterStats();
         String[] options = {"Train", "Meditate"};
         switch(this.getCharacter().readUserChoice(options)){
             case 1:

@@ -8,38 +8,36 @@ import A7_State.task.src.Levels.ExpertState;
 import A7_State.task.src.Levels.NoviceState;
 import A7_State.task.src.Levels.MasterState;
 
-
 public class Character {
     private static Scanner scanner = new Scanner(System.in);
     private static Random random = new Random();
-    private final String defaultNames[] = {"John", "Steve", "Alex", "Jane"};
+    private final String defaultNames[] = { "John", "Steve", "Alex", "Jane" };
     private State state;
 
-    //Character attributes
+    // Character attributes
     private String name;
     private levelType level;
     private double xpPoints;
     private double healthPoints;
 
-    public enum levelType{
+    public enum levelType {
         Novice,
         Intermediate,
         Expert,
         Master
     }
 
-
-    public Character(){
+    public Character() {
         state = new SetupState(this);
-        //Init values
+        // Init values
         setLevel(levelType.Novice);
         setXPPoints(0);
         setHealthPoints(100);
     }
 
-    public void operate(){
-        while(true){
-            if(this.state == null){
+    public void operate() {
+        while (true) {
+            if (this.state == null) {
                 System.out.println("Character dead..too bad");
                 return;
             }
@@ -48,99 +46,117 @@ public class Character {
         }
     }
 
-    public void setState(State state){
+    public void setState(State state) {
         this.state = state;
     }
 
-
-    public int readUserChoice(String[] options){
+    public int readUserChoice(String[] options) {
         System.out.println("\nSelect an option: ");
-        for(int i=1; i<=options.length; i++){
-            System.out.println(i + ". " + options[i-1]);
+        for (int i = 1; i <= options.length; i++) {
+            System.out.println(i + ". " + options[i - 1]);
         }
 
         return scanner.nextInt();
     }
 
-
-
-    //Character
-    public void askName(){
-        System.out.println("Enter a username or computer will pick a default name for you: ");
+    // Character
+    public void askName() {
+        System.out.println("Enter a username or the computer will pick a default name for you: ");
         String name = scanner.nextLine();
-        if(name.trim().isEmpty()){
+        if (name.trim().isEmpty()) {
             name = defaultNames[random.nextInt(defaultNames.length)];
         }
         setName(name);
-        System.out.println(name + " chosen as the name of the character.");
+        System.out.println(name + " chosen as the name of the character.\n\n");
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setLevel(levelType level){
+    public void setLevel(levelType level) {
         this.level = level;
     }
 
-    public void setXPPoints(double xpPoints){
+    public void setXPPoints(double xpPoints) {
         this.xpPoints = xpPoints;
     }
 
-    public void setHealthPoints(double healthPoints){
+    public void setHealthPoints(double healthPoints) {
         this.healthPoints = healthPoints;
     }
 
-
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public levelType getLevel(){
+    public levelType getLevel() {
         return this.level;
     }
 
-    public double getXPPoints(){
+    public double getXPPoints() {
         return this.xpPoints;
     }
 
-    public double getHealthPoints(){
+    public double getHealthPoints() {
         return this.healthPoints;
     }
 
-
-    public void addXPPoints(double xpPoints){
+    public void addXPPoints(double xpPoints) {
         this.xpPoints += xpPoints;
     }
 
-    public void addHealthPoints(double healthPoints){
+    public void addHealthPoints(double healthPoints) {
         this.healthPoints += healthPoints;
     }
 
-    public void checkLevelUp(){
-        //Level-Up check
-        if(getXPPoints() >= 300){
-            System.out.println("You have leveled up to Master Level!");
-            setLevel(Character.levelType.Master);
+    /**
+     * Checks the Level and whether the player should be leveled-up.
+     */
+    public void checkLevelUp() {
+
+        if (getXPPoints() >= 300) {
+            if (level != levelType.Master) {
+                System.out.println("You have leveled up to Master Level!");
+                setLevel(levelType.Master);
+            }
             setState(new MasterState(this));
         }
-        else if(getXPPoints() >= 200){
-            System.out.println("You have leveled up to Expert Level!");
-            setLevel(Character.levelType.Expert);
+
+        else if (getXPPoints() >= 200) {
+            if (level != levelType.Expert) {
+                System.out.println("You have leveled up to Expert Level!");
+                setLevel(levelType.Expert);
+            }
             setState(new ExpertState(this));
         }
-        else if(getXPPoints() >= 100){
-            System.out.println("You have leveled up to Intermediate Level!");
-            setLevel(Character.levelType.Master);
+
+        else if (getXPPoints() >= 100) {
+            if (level != levelType.Intermediate) {
+                System.out.println("You have leveled up to Intermediate Level!");
+                setLevel(levelType.Intermediate);
+            }
             setState(new IntermediateState(this));
         }
-        else{
+
+        else {
+            setLevel(levelType.Novice);
             setState(new NoviceState(this));
         }
-
     }
 
-    public void printCharacterStats(){
+    public void displayCurrentLevel() {
+        System.out.println("Your current level: " + this.level);
+    }
+
+    /**
+     * Displays Character stats including:
+     * - Name
+     * - Level
+     * - XP Points
+     * - Health Points
+     */
+    public void printCharacterStats() {
         System.out.println("Current character stats:");
         System.out.println("------------------------:");
         System.out.println("Character name: " + getName());

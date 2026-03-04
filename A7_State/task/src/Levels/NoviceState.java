@@ -11,6 +11,8 @@ public class NoviceState extends State {
     }
 
     public void action(){
+        this.getCharacter().printCharacterStats();
+        //this.getCharacter().displayCurrentLevel();
         String[] options = {"Train"};
         switch(this.getCharacter().readUserChoice(options)){
             case 1:

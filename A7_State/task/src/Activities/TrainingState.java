@@ -17,7 +17,8 @@ public class TrainingState extends State {
     @Override
     public void action(){
 
-        getCharacter().printCharacterStats();
+        //this.getCharacter().displayCurrentLevel();
+        displayWelcomeMSG();
 
         String[] options = {"Strength Training", "Endurance Training", "Intense Training"};
         switch(this.getCharacter().readUserChoice(options)){
@@ -26,23 +27,56 @@ public class TrainingState extends State {
             case 3 -> intenseTraining();
         }
 
+        this.getCharacter().checkLevelUp();
+
     }
 
 
     //Todo: Randomize points
     private void strengthTraining(){
-        this.getCharacter().addXPPoints(random.nextInt(5) + 8);
-        this.getCharacter().addHealthPoints(-(random.nextInt(4) + 3));
+        int gainedXPPoints = random.nextInt(5) + 8;
+        int lostHealthPoints = random.nextInt(4) + 3;
+
+        this.getCharacter().addXPPoints(gainedXPPoints);
+        this.getCharacter().addHealthPoints(-(lostHealthPoints));
+
+        displayProgress(gainedXPPoints, lostHealthPoints);
     }
 
     private void enduranceTraining(){
-        this.getCharacter().addXPPoints(random.nextInt(6) + 12);
-        this.getCharacter().addHealthPoints(-(random.nextInt(4) + 4));
+        int gainedXPPoints = random.nextInt(6) + 12;
+        int lostHealthPoints = random.nextInt(4) + 4;
+
+        this.getCharacter().addXPPoints(gainedXPPoints);
+        this.getCharacter().addHealthPoints(-(lostHealthPoints));
+
+        displayProgress(gainedXPPoints, lostHealthPoints);
     }
 
     private void intenseTraining(){
-        this.getCharacter().addXPPoints(random.nextInt(8) + 18);
-        this.getCharacter().addHealthPoints(-(random.nextInt(6) + 5));
+        int gainedXPPoints = random.nextInt(8) + 18;
+        int lostHealthPoints = random.nextInt(6) + 5;
+
+        this.getCharacter().addXPPoints(gainedXPPoints);
+        this.getCharacter().addHealthPoints(-(lostHealthPoints));
+
+        displayProgress(gainedXPPoints, lostHealthPoints);
     }
-    
+
+    private void displayWelcomeMSG(){
+        System.out.println();
+        System.out.println("----------------");
+        System.out.println("Training Session");
+        System.out.println("----------------");
+    }
+
+    /**
+     * Displays the result of Training
+     * @param gainedXPPoints points of XP gained from the Training session.
+     * @param lostHealthPoints points of HP losts due to the Training session.
+     */
+    private void displayProgress(int gainedXPPoints, int lostHealthPoints){
+        System.out.println("Gained XP points: " + gainedXPPoints);
+        System.out.println("Lost Health Points: " + lostHealthPoints + "\n");
+    }
 }

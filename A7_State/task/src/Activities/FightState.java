@@ -11,12 +11,15 @@ public class FightState extends State{
 
     @Override
     public void action(){
-        getCharacter().printCharacterStats();
+        //getCharacter().printCharacterStats();
+        //this.getCharacter().displayCurrentLevel();
 
         String[] options = {"Boss fight"};
         switch(this.getCharacter().readUserChoice(options)){
             case 1 -> bossFight();
         }
+
+        this.getCharacter().checkLevelUp();
     }
 
 

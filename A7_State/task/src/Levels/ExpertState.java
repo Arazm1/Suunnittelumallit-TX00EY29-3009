@@ -13,7 +13,9 @@ public class ExpertState extends State {
     }
 
     public void action(){
-        String[] options = {"Train", "Meditate"};
+        //this.getCharacter().displayCurrentLevel();
+        this.getCharacter().printCharacterStats();
+        String[] options = {"Train", "Meditate", "Fight"};
         switch(this.getCharacter().readUserChoice(options)){
             case 1:
                 this.getCharacter().setState(new TrainingState(this.getCharacter()));
@@ -25,5 +27,7 @@ public class ExpertState extends State {
                 this.getCharacter().setState(new FightState(this.getCharacter()));
                 break;
         }
+
+        
     }
 }
