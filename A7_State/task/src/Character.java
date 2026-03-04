@@ -41,6 +41,9 @@ public class Character {
                 System.out.println("Character dead..too bad");
                 return;
             }
+            if(this.level == levelType.Master){
+                return;
+            }
 
             state.action();
         }
