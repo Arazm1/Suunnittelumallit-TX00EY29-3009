@@ -19,6 +19,7 @@ public class Main {
 
 
 
+        /* 
         EncryptedPrinter ep = new EncryptedPrinter(new BasicPrinter());
 
         String encrypted = ep.encrypt("Hello World!");
@@ -26,6 +27,7 @@ public class Main {
 
         String decrypted = ep.decrypt(encrypted);
         System.out.println("Decrypted: " + decrypted);
+        */
 
     }
     
