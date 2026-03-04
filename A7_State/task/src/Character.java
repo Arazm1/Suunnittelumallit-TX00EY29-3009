@@ -44,6 +44,10 @@ public class Character {
             if(this.level == levelType.Master){
                 return;
             }
+            if(this.healthPoints <= 0){
+                System.out.println("You died!");
+                return;
+            }
 
             state.action();
         }
