@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
@@ -15,6 +16,7 @@ public class GUI extends Application{
     private ColorBox colorBox2; 
     private ColorBox colorBox3;
     private CheckBox checkBox;
+    private Button historyButton;
 
 
     public void start(Stage stage){
@@ -29,6 +31,11 @@ public class GUI extends Application{
         checkBox = new CheckBox("Click me!");
         checkBox.setPadding(insets);
 
+        historyButton = new Button("History");
+        historyButton.setPadding(insets);
+
+
+
         HBox hBox = new HBox(colorBox1.getRectangle(), colorBox2.getRectangle(), colorBox3.getRectangle());
         hBox.setSpacing(10);
 
@@ -40,7 +47,7 @@ public class GUI extends Application{
         label.setPadding(insets);
 
         //Create a VBox that contains the HBox and the Checkbox
-        VBox vBox = new VBox(hBox, checkBox, label);
+        VBox vBox = new VBox(hBox, checkBox, label, historyButton);
         //Call controller when the CheckBox is clicked
         checkBox.setOnAction(event ->{
             controller.setIsSelected(checkBox.isSelected());
@@ -48,13 +55,30 @@ public class GUI extends Application{
 
         //Set the HBox to be the root of the Scene
         Scene scene = new Scene(vBox);
+
+        
         scene.setOnKeyPressed(event ->{
+            //Ctrl-Z: undo
             if(event.isControlDown() && event.getCode() == KeyCode.Z){
-                //Ctrl-Z: undo
                 System.out.println("Undo key combination pressed");
                 controller.undo();
             }
+
+            //Ctrl-Y: redo
+            if(event.isControlDown() && event.getCode() == KeyCode.Y){
+                System.out.println("Redo key combination pressed");
+                controller.redo();
+            }
         });
+
+        historyButton.setOnAction(event -> {
+            System.out.println("History button clicked!");
+            HistoryWindow historyWindow = new HistoryWindow(controller.getHistory(), controller);
+            historyWindow.show();
+        });
+
+
+        
 
         stage.setScene(scene);
         stage.setTitle("Memento Pattern Example");
