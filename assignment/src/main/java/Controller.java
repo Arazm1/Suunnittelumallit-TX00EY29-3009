@@ -15,6 +15,15 @@ public class Controller {
         this.redoHistory = new ArrayList<>();
     }
 
+    /**
+     * 
+     * @param optionNumber 
+     * @param choice
+     * 
+     * Saves the state to history
+     * Apply changes to the model
+     * Clear the redoHistory
+     */
     public void setOption(int optionNumber, int choice){
         saveToHistory();
         model.setOption(optionNumber, choice);
@@ -25,6 +34,13 @@ public class Controller {
         return model.getOption(optionNumber);
     }
 
+    /**
+     * 
+     * @param isSelected
+     * Saves the state to history
+     * Apply changes to the model
+     * Clear the redoHistory
+     */
     public void setIsSelected(boolean isSelected){
         saveToHistory();
         model.setIsSelected(isSelected);
@@ -36,6 +52,10 @@ public class Controller {
     }
 
 
+    /**
+     * Removes the recent state from history
+     * Saves the current state to redoHistory
+     */
     public void undo(){
         if(!history.isEmpty()){
             System.out.println("Memento found in history");
@@ -47,6 +67,10 @@ public class Controller {
         }
     }
 
+    /**
+     * Removes recent state from redoHistory
+     * Saves the current state to history
+     */
     public void redo(){
         if(!redoHistory.isEmpty()){
         System.out.println("Redo! Memento found in redoHistory");
