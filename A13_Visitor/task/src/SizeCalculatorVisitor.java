@@ -12,7 +12,7 @@ public class SizeCalculatorVisitor implements FileSystemVisitor {
 
     @Override
     public void visit(Directory directory){
-        System.out.println("Directory doesnt have a siz");
+        System.out.println("Directory doesnt have a size");
     }
 
     public double getTotalSize(){
