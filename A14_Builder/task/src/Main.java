@@ -9,6 +9,14 @@ public class Main {
         Computer computer1 = gamingPCBuilder.getComputer();
         System.out.println(computer1);
 
+        ComputerBuilder offComputerBuilder = new OfficeComputerBuilder();
+        ComputerDirector director2 = new ComputerDirector(offComputerBuilder);
+        director2.constructComputer();
+        Computer computer2 = offComputerBuilder.getComputer();
+        System.out.println(computer2);
+
+
+
     }
     
 }
