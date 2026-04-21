@@ -1,6 +1,4 @@
-package controller;
-
-import model.User;
+package model;
 
 public interface IMediator {
     void registerUser(User user);

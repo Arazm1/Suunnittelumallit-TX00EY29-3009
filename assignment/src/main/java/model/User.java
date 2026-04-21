@@ -1,7 +1,5 @@
 package model;
 
-import controller.IMediator;
-
 public abstract class User {
 
     private static int count = 0;
@@ -34,20 +32,5 @@ public abstract class User {
     public abstract void receive(String message, String senderUsername);
     public abstract void onUserJoined(String newUsername);
 
-
-    /*{
-        System.out.println(this + " receiving message from " + senderUsername);
-        chatController.receiveMessage(message, senderUsername); 
-    }*/
-
-    // Updates the sidebar
-    //public abstract void updateContactList(String newContact); 
-    /*{
-        System.out.println("Updating list with " + newContact);
-        chatController.addUserToList(newContact);
-    }*/
-
-
-   
 
 } 

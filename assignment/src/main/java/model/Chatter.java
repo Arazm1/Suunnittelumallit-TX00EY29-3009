@@ -1,7 +1,6 @@
 package model;
 
 import controller.ChatWindowController;
-import controller.IMediator;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

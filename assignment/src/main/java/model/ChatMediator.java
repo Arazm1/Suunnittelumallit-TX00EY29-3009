@@ -1,17 +1,15 @@
-package controller;
+package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import model.User;
-
-public class ChatController implements IMediator{
+public class ChatMediator implements IMediator{
 
     private final List<User> users;
 
-    public ChatController(){
+    public ChatMediator(){
         this.users = new ArrayList<>();
     }
 
