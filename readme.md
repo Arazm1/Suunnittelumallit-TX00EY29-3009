@@ -9,6 +9,7 @@ Repository containing my solutions for the course **Suunnittelumallit-TX00EY29-3
 * A2 – Abstract Factory
 * A5 – Singleton
 * A14 – Builder
+* A18 - Prototype
   
 ####  Structural Patterns
 * A3 – Composite
