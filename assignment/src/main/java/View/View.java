@@ -1,22 +1,26 @@
 package View;
 
-import controller.ChatWindowController;
+import controller.ChatController;
+import controller.IMediator;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.ChatController;
 import model.Chatter;
-import model.Mediator;
-import model.User;
 
 public class View extends Application {
 
+
+    @Override
+    public void start(Stage stage){
+        IMediator iMediator = new ChatController();
+        new Chatter("Alice", iMediator);
+        new Chatter("Ben", iMediator);
+        new Chatter("Chuck", iMediator);
+    }
+    /*
     @Override
     public void start(Stage primaryStage) throws Exception {
         // 1. Create the SINGLE central Mediator
-        Mediator centralMediator = new ChatController();
+        IMediator centralMediator = new ChatController();
 
         // 2. Spawn 3 distinct clients
         createClientWindow("Alice", centralMediator);
@@ -24,7 +28,7 @@ public class View extends Application {
         createClientWindow("Charlie", centralMediator);
     }
 
-    private void createClientWindow(String username, Mediator mediator) throws Exception {
+    private void createClientWindow(String username, IMediator mediator) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/chat_window.fxml"));
         Parent root = loader.load();
 
@@ -44,4 +48,5 @@ public class View extends Application {
         stage.setTitle("Chat - " + username); // Assignment requirement: Unique Title!
         stage.show();
     }
+    */
 }

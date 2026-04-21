@@ -4,14 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import model.Mediator;
-import model.User;
+import model.Chatter;
 
 public class ChatWindowController {
 
-    //private Mediator mediator;
-    //private String username;
-    private User myUser;
+    private Chatter chatter;
 
     @FXML
     private ListView<String> userList;
@@ -22,19 +19,22 @@ public class ChatWindowController {
     @FXML
     private TextField messageField;
 
-    /*
-    public String getUsername(){
-        return this.username;
-    }
-    */
 
-    public void setUser(User user){
-        this.myUser = user;
+    public void setChatter(Chatter chatter){
+        this.chatter = chatter;
+    }
+
+    public Chatter getChatter(){
+        return this.chatter;
     }
     
 
-    public void addUserToList(String newUsername){
-        userList.getItems().add(newUsername);
+    public void addUserToList(String username){
+        userList.getItems().add(username);
+    }
+
+    public void displayMessage(String formattedMessage) {
+        messageHistory.appendText(formattedMessage + "\n");
     }
 
     @FXML
@@ -42,37 +42,18 @@ public class ChatWindowController {
         String message = messageField.getText();
         String recipient = userList.getSelectionModel().getSelectedItem();
 
-        if (message != null && !message.trim().isEmpty() && recipient != null) {
-            messageHistory.appendText("You -> " + recipient + ": " + message + "\n");
-            
-            // Pass the action to the User model!
-            myUser.send(message, recipient); 
-            
-            messageField.clear();
+        if(message.isEmpty() || recipient == null){
+            System.out.println("handleSend failed!");
+            return;
         }
+
+        messageHistory.appendText("You -> " + recipient + ": " + message + "\n");
+        chatter.send(message, recipient);
+        messageField.clear();
     }
 
-    /* 
-    @FXML
-    private void handleSend(){
-        String message = messageField.getText();
-        String recipient = userList.getSelectionModel().getSelectedItem();
-
-        if(message != null && !message.trim().isEmpty() && recipient != null){
-
-            messageHistory.appendText("You -> " + recipient + ": " + message);
-
-            mediator.sendMessage(message, recipient, this.username);
-            messageField.clear();
-        }
-        else{
-            System.out.println("Error in handleSend");
-        }
-    }
-        */
-
-    public void receiveMessage(String message, String senderUsername){
-       messageHistory.appendText(senderUsername + ": " + message + "\n"); 
-    }
+    //public void receiveMessage(String message, String senderUsername){
+    //   messageHistory.appendText(senderUsername + ": " + message + "\n"); 
+    //}
     
 }
