@@ -13,9 +13,9 @@ public class APIFacade {
         this.jsonParser = jsonParser;
     }
 
-    public String getAttributeValueFromJson(String urlString) throws IllegalArgumentException, IOException {
+    public String getAttributeValueFromJson(String urlString, String attributeName) throws IllegalArgumentException, IOException {
         String json = httpHandler.getJsonFromAPI(urlString);   // was getJsonFromApi()
-        return jsonParser.extractJokeFromJson(json); // was extractJokeFromJson()
+        return jsonParser.extractFromJson(json, attributeName); // was extractJokeFromJson()
     }
     
 }

@@ -7,15 +7,14 @@ import org.json.simple.parser.ParseException;
 public class JsonParser implements IJsonParser{
 
     @Override
-    public String extractJokeFromJson(String json) throws IllegalArgumentException{
+    public String extractFromJson(String json, String attributeName) throws IllegalArgumentException{
         try{
             JSONParser parser = new JSONParser();
             JSONObject jsonObject = (JSONObject) parser.parse(json);
-            return (String) jsonObject.get("value");
+            return (String) jsonObject.get(attributeName);
         }
         catch(Exception e){
-            e.printStackTrace();
-            return null;
+            throw new IllegalArgumentException("Failed to parse JSON: " + e.getMessage());
         }
         
     }

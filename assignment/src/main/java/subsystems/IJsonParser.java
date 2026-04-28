@@ -5,6 +5,6 @@ import org.json.simple.parser.JSONParser;
 
 //3
 public interface IJsonParser {
-    String extractJokeFromJson(String json) throws IllegalArgumentException;
+    String extractFromJson(String json, String attributeName) throws IllegalArgumentException;
     
 }
