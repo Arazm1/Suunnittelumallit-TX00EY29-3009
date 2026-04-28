@@ -24,15 +24,4 @@ public class FibonacciIterator implements Iterator<Integer>{
         current = current.getNext();
         return data;
     } 
-    
-    public void generateNextNumber(Integer data){
-        Node newnode = new Node(data);
-        if(head == null){
-            
-        }
-        else{
-
-    
-        }
-    }
 }

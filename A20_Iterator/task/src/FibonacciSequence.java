@@ -14,12 +14,12 @@ public class FibonacciSequence implements Sequence{
     }
 
     @Override
-    public void add(Integer data){
+    public void add(){
         int value;
         if(head == null){
             value = 1;
         }
-        if(head == tail){
+        else if(head == tail){
             value = 1;
         }
         else{
@@ -31,13 +31,11 @@ public class FibonacciSequence implements Sequence{
         }
 
 
-
-
         Node newNode = new Node(value);
         if(head == null){
             head = newNode;
             tail = newNode;
-            tail.setNext(head);
+            //tail.setNext(head);
         }
         else{
             tail.setNext(newNode);
@@ -48,6 +46,10 @@ public class FibonacciSequence implements Sequence{
 
     public Node getHead(){
         return this.head;
+    }
+
+    public int getLast(){
+        return tail.getData();
     }
 
     @Override

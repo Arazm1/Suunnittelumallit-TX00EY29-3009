@@ -7,31 +7,24 @@ public class Main {
     public static void main(String[] args) {
         
         Scanner scanner = new Scanner(System.in);
-
         Sequence fibonacciSequence = new FibonacciSequence();
 
-        /* 
-        fibonacciSequence.add(17);
-        fibonacciSequence.add(3);
-        fibonacciSequence.add(-2);
-        fibonacciSequence.add(0);
-        */
-        for (int i = 0; i < 10; i++) {
-            fibonacciSequence.add(0);  // argument is ignored, value is computed internally
-        }
+        System.out.println("Press Enter for next number, 'q' to Exit.");
 
-
-        Iterator iterator = fibonacciSequence.iterator();
-
-        while(iterator.hasNext()){
-            System.out.println("In turn: " + iterator.next());
-            // 'Enter' continues, 'q' stops
+        while(true){
+            fibonacciSequence.add();
+            Iterator<Integer> iterator = fibonacciSequence.iterator();
+            int last = 0;
+            while(iterator.hasNext()){
+                last = iterator.next();
+            }
+            System.out.println("Next: " + last);
             String s = scanner.nextLine();
+
             if(s.equals("q")){
                 break;
             }
         }
-        
+        scanner.close();
     }
-    
 }
