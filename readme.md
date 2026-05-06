@@ -16,6 +16,7 @@ Repository containing my solutions for the course **Suunnittelumallit-TX00EY29-3
 * A6 – Decorator
 * A12 – Proxy
 * A15 – Adapter
+* A21 - Facade
 
 ####  Behavioral Patterns
 * A4 – Observer
@@ -23,4 +24,9 @@ Repository containing my solutions for the course **Suunnittelumallit-TX00EY29-3
 * A8 – Template Method
 * A9 – Strategy
 * A10 – Chain of Responsibility
+* A11 - Memento
 * A13 – Visitor
+* A19 - Mediator
+* A20 - Iterator
+* A22 - Command
+
